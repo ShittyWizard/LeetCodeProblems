@@ -4,17 +4,25 @@ import java.util.Stack;
 
 public class Solution {
     public String reverseWords(String s) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         Stack<String> reverseString = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i)
+        for (String word : s.split(" ")) {
+            if (!word.equals(" ") && word.length() != 0) {
+                System.out.println("Word is: (" + word + ")");
+                reverseString.push(word);
+            }
         }
-//        reverseString.push();
-        answer += reverseString.pop();
-        return answer;
+        while (!reverseString.empty()) {
+            answer.append(reverseString.pop());
+            answer.append(" ");
+        }
+        System.out.println("answer = " + answer);
+        return answer.toString().trim();
     }
 
     public static void main(String[] args) {
-
+        Solution solution = new Solution();
+        String s = "   a   b ";
+        solution.reverseWords(s);
     }
 }
